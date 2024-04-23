@@ -1,0 +1,21 @@
+.random__block {
+	position: relative;
+	width: 40rem;
+	height: 40rem;
+	margin: 0 auto;
+	background-color: cadetblue;
+}
+
+.random__el {
+	width: 8rem;
+	height: 8rem;
+
+	&:nth-child(1) {
+		background-color: tomato;
+		border-radius: 50%;
+	}
+
+	&:nth-child(2) {
+		background-color: chartreuse;
+	}
+}

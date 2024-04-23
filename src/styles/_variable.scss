@@ -1,0 +1,37 @@
+//---------------------------------------------fonts
+$font_1: 'Roboto', sans-serif;
+$fontSizeBase: 16px;
+//---------------------------------------------fonts###
+//---------------------------------------------layout
+$pageWidth: 100%;
+//---------------------------------------------layout###
+//---------------------------------------------colors
+$white: #fff;
+$black: #000000;
+$gray: #434343;
+
+$colorTextBase: $black;
+$colorLinkBase: #3856E5;
+$bodyBg: $white;
+//---------------------------------------------colors###
+//---------------------------------------------global values
+$glRadius: 1rem;
+//---------------------------------------------global values###
+//---------------------------------------------media points
+$desktopLg: 1920px;
+$desktop: 1440px;
+$laptop: 1200px;
+$tabletPortrait: 991px;
+$tablet: 768px;
+$small: 375px;
+//---------------------------------------------media points###
+//---------------------------------------------form style
+$input_height: 2rem;
+$input_offset: 1rem;
+$input_font_size: $fontSizeBase;
+$input_text_color: $black;
+$input_border_color: $black;
+$input_radius: 0.2rem;
+$input_border_color_active: $colorLinkBase;
+$input_placeholder_color: $gray;
+//---------------------------------------------form style###
