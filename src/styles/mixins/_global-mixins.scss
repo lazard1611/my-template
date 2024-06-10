@@ -22,11 +22,11 @@
 			@content;
 		}
 	} @else if $value == max {
-		@media screen and (max-width: $width) {
+		@media screen and (max-width: $width - 1) {
 			@content;
 		}
 	} @else {
-		@media (max-width: $width) and (min-width: $value) {
+		@media (max-width: $width - 1) and (min-width: $value) {
 			@content;
 		}
 	}

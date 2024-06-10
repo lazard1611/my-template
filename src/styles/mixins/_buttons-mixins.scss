@@ -39,24 +39,24 @@
 
 //size mixins:
 @mixin btn_size_normal {
-	padding: 0 r(20);
+	padding: 0 2rem;
 
 	@include bp($tablet, min) {
-		height: r(40);
+		height: 4rem;
 
-		line-height: r(40);
-		font-size: r(18);
+		line-height: 4rem;
+		font-size: 1.8rem;
 
 		border-radius: r(20);
 	}
 
 	@include bp($tablet) {
-		height: r(32);
+		height: 3.2rem;
 
-		line-height: r(32);
-		font-size: r(16);
+		line-height: 3.2rem;
+		font-size: 1.6rem;
 
-		border-radius: r(16);
+		border-radius: 1.6rem;
 	}
 }
 

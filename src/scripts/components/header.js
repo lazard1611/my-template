@@ -1,22 +1,24 @@
 import { onWindowScroll, exist } from '../utils';
 
 const header = () => {
-    const SELECTORS = {
-        header: '.header',
-        menuTrigger: '.js-header-trigger',
+    const SELECTORS = {        
+        menuTrigger: '.js-header-menu-trigger',
     };
 
     const CLASSNAMES = {
         bodyOpenMenuState: 'body--open_menu_state',
         headerScrollState: 'header--scroll_state',
+        bodyScrollPos: 'header--pos_state',
     };
 
     const $body = document.body;
-    const $header = document.querySelector(SELECTORS.header);
-    const $menuTrigger = document.querySelector(SELECTORS.menuTrigger);
-    if (!exist([$header, $menuTrigger])) return;
+    const $header = document.querySelector('header');
+    if (!$header) return;
+    const $menuTrigger = $header.querySelector(SELECTORS.menuTrigger);
 
     let isMenuOpen = false;
+    let prevScrollPos = window.scrollY;
+	const headerHeight = $header.clientHeight;
 
     const handleTriggerClick = () => {
         if (!isMenuOpen) {
@@ -34,10 +36,18 @@ const header = () => {
         } else if (windowScrollTop <= 10 && $header.classList.contains(CLASSNAMES.headerScrollState)) {
             $header.classList.remove(CLASSNAMES.headerScrollState);
         }
+
+        if (prevScrollPos < window.scrollY && scrollY > headerHeight) {
+			$header.classList.add(CLASSNAMES.bodyScrollPos);
+		} else {
+			$header.classList.remove(CLASSNAMES.bodyScrollPos);
+		}
+		prevScrollPos = window.scrollY;
     };
 
     onWindowScroll(headerScroll);
 
+    if (!$menuTrigger) return;
     $menuTrigger.addEventListener('click', () => {
         handleTriggerClick();
     });

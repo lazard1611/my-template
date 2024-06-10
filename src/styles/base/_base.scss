@@ -1,13 +1,13 @@
-:root {
-	//--height-footer: r(100);
-	--height-header: 5rem;
+:root {	
 
-	@include bp($tabletPortrait, min) {
-		--gl-indent: 1rem;
+	@include bp($laptop, min) {
+		--gl-indent: 4rem;
+		--height-header: 6rem;
 	}
 
-	@include bp($tabletPortrait - 1) {
-		--gl-indent: 1.375rem;
+	@include bp($laptop) {
+		--gl-indent: 2rem;
+		--height-header: 5rem;
 	}
 }
 
@@ -15,19 +15,19 @@ html {
 	height: 100%;
 	font-family: $font_1;
 	line-height: 1.33;
-	font-size: $fontSizeBase;
+	
 
-	@include bp($tabletPortrait, min) {
-		font-size: calc(100vw / 991 * 10);
+	@include bp($laptop, min) {
+		font-size: calc(100vw / 1200 * 10);
 	}
-	//
-	//@include bp($tabletPortrait - 1, $small) {
-	//	font-size: $fontSizeBase;
-	//}
-	//
-	//@include bp($small - 1) {
-	//	font-size: calc(100vw / 375 * 16);
-	//}
+	
+	@include bp($laptop, $small) {
+		font-size: 10px;
+	}
+	
+	@include bp($small) {
+		font-size: calc(100vw / 375 * 10);
+	}
 
 }
 
@@ -71,11 +71,11 @@ body {
 	min-height: 100vh;
 
 	@include bp($tablet, min) {
-		padding: r(60) var(--gl-indent);
+		padding: 5rem var(--gl-indent);
 	}
 
-	@include bp($tablet - 1) {
-		padding: r(30) var(--gl-indent);
+	@include bp($tablet) {
+		padding: 3rem var(--gl-indent);
 	}
 }
 

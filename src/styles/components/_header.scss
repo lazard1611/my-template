@@ -8,36 +8,142 @@
 	width: 100%;
 
 	padding: 0 var(--gl-indent);
+	display: flex;
+	align-items: center;
 
-	//=============demo===========
-	.header__in {
-		display: flex;
-		align-items: center;
+	background-color: $white;
+    transition: transform 0.5s ease;
+
+    &.header--scroll_state {
+        transform: translateY(-100%);
+        box-shadow: 0 0 16px -2px rgba(0, 0, 0, 0.3);
+    }
+
+    &:not(.header--pos_state) {
+        transform: translateY(0%);
+    }   
+}
+
+.header__container {
+	display: flex;
+	align-items: center;
+}
+
+.header__nav {
+	flex: auto;
+
+	@include bp($tablet) {
+		z-index: 10;
+		position: fixed;
+		top: var(--height-header);
+		left: 0;
+		width: 100%;
+		height: 100svh;
+		
+		background-color: $white;
+		padding: var(--gl-indent);
+
+		transition:
+		 transform 0.5s ease,
+		 opacity 0.3s ease;
+
+		opacity: 0;
+		transform: translateX(-100%);
+		pointer-events: none;
 	}
 
-	nav {
-		flex: auto;
+	.body--open_menu_state & {
+		transform: translateX(0%);
+		opacity: 1;
+		pointer-events: auto;
+	}
+}
 
-		&:not(:last-child) {
-			margin-right: r(20);
+.header__list {	
+
+	@include bp($tablet, min) {
+		display: flex;
+		justify-content: flex-end;
+		margin: 0 -1.6rem -1.6rem 0;
+	}
+}
+
+.header__item {
+
+	@include bp($tablet, min) {
+		padding: 0 1.6rem 1.6rem 0;
+	}
+
+	&:not(:last-child) {
+		@include bp($tablet) {			
+			margin-bottom: 2rem;
+		}
+	}
+}
+
+.header__link {
+	font-size: 1.6rem;
+	line-height: 1;
+	text-transform: uppercase;
+}
+
+.header__menu_trigger {
+	$burgerHeight: 2rem;
+
+	position: relative;
+	z-index: 5;
+
+	width: 3rem;
+	height: $burgerHeight;
+
+	cursor: pointer;
+
+	&::before,
+	&::after,
+	span {
+		position: absolute;
+		left: 0;
+		top: 50%;
+
+		width: 100%;
+		height: 2px;
+
+		transition: transform 0.3s ease;
+		will-change: transform;
+
+		background-color: $black;
+	}
+
+	&::before {
+		content: '';
+		transform: translateY(calc($burgerHeight / 2 * -1));
+	}
+
+	&::after {
+		content: '';
+		transform: translateY(calc($burgerHeight / 2));
+	}
+
+	.body--open_menu_state & {
+		span {
+			transform: scale(0);
+		}
+
+		&::before {
+			transform: rotate(-45deg);
+		}
+
+		&::after {
+			transform: rotate(45deg);
 		}
 	}
 
-	ul {
-		display: flex;
-		justify-content: flex-end;
-		margin: 0 r(-30) r(-30) 0;
+	@include bp($tablet, min) {
+		display: none;
 	}
 
-	li {
-		padding: 0 r(30) r(30) 0;
+	@include bp($tablet) {
+		display: block;
 	}
-
-	//=============demo###========
 }
 
-.header__in {
-	max-width: $pageWidth;
-	width: 100%;
-	margin: 0 auto;
-}
